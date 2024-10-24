@@ -19,21 +19,24 @@ import java.util.List;
 
 @RestController
 public class StudentData {
+
     @Autowired
-    StudentRepository studentRepository;
     private SendDetailsService sendDetailsService;
     @PostMapping("/sendDetails")
     public ResponseEntity<?> sendDetails(@RequestBody StudentEntity student) throws Exception {
         System.out.println("Started sendDetails"+ student);
-        ResponseEntity sent_data = sendDetailsService.addDetailsToDb(student);
+            ResponseEntity sent_data = sendDetailsService.addDetailsToDb(student);
+//            if (sent_data.getStatusCode()!= HttpStatus.OK){
+//                return new ResponseEntity<>(sent_data, HttpStatus.OK)
+//            }
         return new ResponseEntity<>(sent_data, HttpStatus.OK);
 
     }
     @GetMapping("/getAllDetails")
-    public List<?> getAllDetails(){
+    public List<?> getAllDetails() throws Exception{
         System.out.println("In getAllDetails Controller :)");
-        List showDetails = studentRepository.findAll();
-        return showDetails;
+        List stundentsList = sendDetailsService.showDeatils();
+        return stundentsList;
     }
 
 }
