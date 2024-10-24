@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.apache.catalina.webresources.StandardRoot;
 
 import javax.persistence.*;
 
@@ -20,7 +19,7 @@ import javax.persistence.*;
                 columnNames = "Email_id"
 )
 )//Can be used to rename tables
-public class Student {
+public class StudentEntity {
     @Id
     @SequenceGenerator(
             name = "student_sequence",
@@ -29,7 +28,7 @@ public class Student {
     )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "student_generator"
+            generator = "student_sequence"
     )
 
     // need to add Generated value and sequence generator to avoid the error mentioned error below.
@@ -37,6 +36,63 @@ public class Student {
     private Long studentId;
     private String firstName;
     private String lastName;
+
+    public Long getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(Long studentId) {
+        this.studentId = studentId;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getEmailId() {
+        return emailId;
+    }
+
+    public void setEmailId(String emailId) {
+        this.emailId = emailId;
+    }
+
+    public String getGuardianName() {
+        return guardianName;
+    }
+
+    public void setGuardianName(String guardianName) {
+        this.guardianName = guardianName;
+    }
+
+    public String getGuardianEmail() {
+        return guardianEmail;
+    }
+
+    public void setGuardianEmail(String guardianEmail) {
+        this.guardianEmail = guardianEmail;
+    }
+
+    public String getGetGuardianMobile() {
+        return getGuardianMobile;
+    }
+
+    public void setGetGuardianMobile(String getGuardianMobile) {
+        this.getGuardianMobile = getGuardianMobile;
+    }
+
     @Column(
             name = "Email_id",
             nullable = false
