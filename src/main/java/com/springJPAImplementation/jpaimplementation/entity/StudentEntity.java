@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.apache.catalina.webresources.StandardRoot;
 
 import javax.persistence.*;
 
@@ -20,7 +19,7 @@ import javax.persistence.*;
                 columnNames = "Email_id"
 )
 )//Can be used to rename tables
-public class Student {
+public class StudentEntity {
     @Id
     @SequenceGenerator(
             name = "student_sequence",
